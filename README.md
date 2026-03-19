@@ -1,1 +1,1 @@
-# Yandex-Lyceum
+<div align="center"> <h1>  Яндекс Лицей · Промышленное программирование  </h1> <p><b>Решения задач на Python</b></p> <img src="https://img.shields.io/badge/python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/status-в процессе-yellow?style=for-the-badge"> <img src="https://img.shields.io/badge/Яндекс-Лицей-red?style=for-the-badge"> </div>
