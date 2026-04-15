@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    {# Используем фильтр random для выбора случайного элемента из списка #}
+    {% set member = members | random %}
+    
+    <h2 class="mb-4">Участник миссии: {{ member.name }} {{ member.surname }}</h2>
+    
+    <div class="card mx-auto shadow" style="width: 22rem;">
+        <img src="{{ url_for('static', filename='img/' + member.photo) }}" 
+             class="card-img-top" alt="Фото участника">
+        <div class="card-body">
+            <h5 class="card-title text-primary">Специальности:</h5>
+            <p class="card-text">
+                {# Используем фильтр sort для списка специальностей #}
+                {% for spec in member.specialties | sort %}
+                    {{ spec }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

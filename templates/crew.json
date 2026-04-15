@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Марк",
+    "surname": "Уотни",
+    "photo": "watney.jpg",
+    "specialties": ["программист", "пилот", "админ"]
+  },
+  {
+    "name": "Ридли",
+    "surname": "Скотт",
+    "photo": "scott.jpg",
+    "specialties": ["режиссер", "сценарист", "инженер"]
+  },
+  {
+    "name": "Энди",
+    "surname": "Уир",
+    "photo": "weir.jpg",
+    "specialties": ["астролог", "писатель", "уборщик"]
+  }
+]
