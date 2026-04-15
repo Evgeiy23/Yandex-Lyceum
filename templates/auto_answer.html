@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="answer-item"><b>Фамилия:</b> {{ data.surname }}</div>
+    <div class="answer-item"><b>Имя:</b> {{ data.name }}</div>
+    <div class="answer-item"><b>Образование:</b> {{ data.education }}</div>
+    <div class="answer-item"><b>Профессия:</b> {{ data.profession }}</div>
+    <div class="answer-item"><b>Пол:</b> {{ data.sex }}</div>
+    <div class="answer-item"><b>Мотивация:</b> {{ data.motivation }}</div>
+    <div class="answer-item"><b>Готовы остаться на Марсе?</b> {{ data.ready }}</div>
+  </div>
+{% endblock %}
