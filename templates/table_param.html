@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mt-4">Оформление каюты</h2>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Цвет стен</th>
+                        <th style="width: 50%;">Эмблема</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {% if sex == 'male' %}
+                                {% if age < 21 %}
+                                    <div class="color-block" style="background-color: #9ab4cc;"></div>
+                                {% else %}
+                                    <div class="color-block" style="background-color: #007bff;"></div>
+                                {% endif %}
+                            {% else %}
+                                {% if age < 21 %}
+                                    <div class="color-block" style="background-color: #ffb08e;"></div>
+                                {% else %}
+                                    <div class="color-block" style="background-color: #ff4500;"></div>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if age < 21 %}
+                                <img src="{{ url_for('static', filename='img/child_martian.png') }}" 
+                                     class="emblem-img" alt="ребенок">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='img/adult_martian.png') }}" 
+                                     class="emblem-img" alt="взрослый">
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
