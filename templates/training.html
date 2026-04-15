@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="text-center mt-5">
+    {% if 'схема' in prof.lower() or 'управление' in prof.lower() %}
+      <h2>Общая схема</h2>
+      <img src="{{ url_for('static', filename='img/sxema.jpg') }}" 
+           alt="Общая схема" style="max-width: 80%;">
+    {% else %}
+      <h2>Пульт управления</h2>
+      <img src="{{ url_for('static', filename='img/pylt_yprav.jpeg') }}" 
+           alt="Пульт управления" style="max-width: 80%;">
+    {% endif %}
+  </div>
+{% endblock %}
