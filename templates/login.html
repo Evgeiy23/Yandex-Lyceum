@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-form">
+    <div class="emblem"></div>
+    <h2>Доступ к системам</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.astronaut_id.label(class="form-label") }}
+            {{ form.astronaut_id(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", type="password") }}
+        </div>
+        <div class="mb-3">
+            {{ form.captain_id.label(class="form-label") }}
+            {{ form.captain_id(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.captain_token.label(class="form-label") }}
+            {{ form.captain_token(class="form-control", type="password") }}
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Войти</button>
+    </form>
+</div>
+{% endblock %}
