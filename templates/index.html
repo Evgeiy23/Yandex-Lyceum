@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-secondary mt-3">И на Марсе будут яблони цвести!</h2>
+<h1 class="text-center mt-4">Works log</h1>
+{% for job in jobs %}
+<h3 class="mt-4">Action #{{ job.id }}</h3>
+<table class="table table-bordered border-secondary">
+    <thead class="table-light">
+    <tr>
+        <th scope="col">Title of activity</th>
+        <th scope="col">Team leader</th>
+        <th scope="col">Duration</th>
+        <th scope="col">List of collaborators</th>
+        <th scope="col">Is finished</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ job.job }}</td>
+        <td>{{ job.user.surname }} {{ job.user.name }}</td>
+        <td>{{ job.work_size }} hours</td>
+        <td>{{ job.collaborators }}</td>
+        {% if job.is_finished %}
+        <td class="table-success text-success">finished</td>
+        {% else %}
+        <td class="table-danger text-danger">is not finished</td>
+        {% endif %}
+    </tr>
+    </tbody>
+</table>
+{% endfor %}
+{% endblock %}
