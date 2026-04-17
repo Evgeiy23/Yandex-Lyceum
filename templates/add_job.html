@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mt-4">Добавление работы</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.name != 'csrf_token' and field.name != 'submit' and field.name != 'is_finished' %}
+    <p>
+        {{ field.label }}<br>
+        {{ field(class="form-control") }}
+    </p>
+    {% endfor %}
+    <p>{{ form.is_finished() }} {{ form.is_finished.label }}</p>
+    <p>{{ form.submit(class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

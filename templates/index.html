@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-secondary mt-3">И на Марсе будут яблони цвести!</h2>
+<h1 class="text-center mt-4">Журнал работ</h1>
+{% if current_user.is_authenticated %}
+<a href="/addjob" class="btn btn-secondary mb-3">Добавить работу</a>
+{% endif %}
+{% for job in jobs %}
+<h3 class="mt-4">Действие #{{ job.id }}</h3>
+<table class="table table-bordered border-secondary">
+    <thead class="table-light">
+    <tr>
+        <th scope="col">Название работы</th>
+        <th scope="col">Руководитель</th>
+        <th scope="col">Длительность</th>
+        <th scope="col">Участники</th>
+        <th scope="col">Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ job.job }}</td>
+        <td>{{ job.user.surname }} {{ job.user.name }}</td>
+        <td>{{ job.work_size }} часов</td>
+        <td>{{ job.collaborators }}</td>
+        {% if job.is_finished %}
+        <td class="text-success">завершено</td>
+        {% else %}
+        <td class="text-danger">не завершено</td>
+        {% endif %}
+    </tr>
+    </tbody>
+</table>
+{% endfor %}
+{% endblock %}
