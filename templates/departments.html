@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-secondary mt-3" style="font-style: italic; color: #ccc !important;">И на Марсе будут яблони цвести!</h2>
+<h1 class="text-center mt-4">List of Departments</h1>
+
+{% if current_user.is_authenticated %}
+<div class="mb-3">
+    <a href="/" class="btn btn-secondary">Back to Jobs</a>
+    <a href="/add_department" class="btn btn-secondary">Add a Department</a>
+</div>
+{% endif %}
+
+{% for dept in departments %}
+<h3 class="mt-4">Department # {{ dept.id }}</h3>
+<table class="table table-bordered">
+    <thead class="table-secondary text-secondary">
+    <tr>
+        <th scope="col" style="width: 40%">Title of department</th>
+        <th scope="col">Chief</th>
+        <th scope="col">Members</th>
+        <th scope="col">Department Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-light">
+        <td>{{ dept.title }}</td>
+        <td>{{ dept.user.surname }} {{ dept.user.name }}</td>
+        <td>{{ dept.members }}</td>
+        <td>{{ dept.email }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{% if current_user.is_authenticated and (current_user.id == 1 or current_user.id == dept.chief) %}
+<div class="mb-4">
+    <a href="/departments/{{ dept.id }}" class="btn btn-warning">Edit Department</a>
+    <a href="/department_delete/{{ dept.id }}" class="btn btn-danger">Delete Department</a>
+</div>
+{% endif %}
+
+{% endfor %}
+{% endblock %}

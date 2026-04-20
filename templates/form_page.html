@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mt-4">{{ title }}</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.name not in ['csrf_token', 'submit', 'is_finished', 'remember_me'] %}
+    <p>
+        {{ field.label }}<br>
+        {{ field(class="form-control") }}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+    </p>
+    {% endfor %}
+    
+    {% if form.is_finished %}
+    <p>{{ form.is_finished() }} {{ form.is_finished.label }}</p>
+    {% endif %}
+    
+    {% if form.remember_me %}
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    {% endif %}
+
+    <p>{{ form.submit(class="btn btn-primary") }}</p>
+    {% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endif %}
+</form>
+{% endblock %}
