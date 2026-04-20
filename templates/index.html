@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-secondary mt-3" style="font-style: italic; color: #ccc !important;">И на Марсе будут яблони цвести!</h2>
+<h1 class="text-center mt-4">Works log</h1>
+
+<div class="mb-3">
+    {% if current_user.is_authenticated %}
+    <a href="/addjob" class="btn btn-secondary">Add job</a>
+    {% endif %}
+    <a href="/departments" class="btn btn-secondary">List of Departments</a>
+</div>
+
+{% for job in jobs %}
+<h3 class="mt-4">Action # {{ job.id }}</h3>
+<table class="table table-bordered">
+    <thead class="table-secondary text-secondary text-center">
+    <tr>
+        <th scope="col">Title of activity</th>
+        <th scope="col">Team leader</th>
+        <th scope="col">Duration</th>
+        <th scope="col">List of collaborators</th>
+        <th scope="col">Hazard category</th>
+        <th scope="col">Is finished</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-light">
+        <td>{{ job.job }}</td>
+        <td>{{ job.user.surname }} {{ job.user.name }}</td>
+        <td>{{ job.work_size }} hours</td>
+        <td>{{ job.collaborators }}</td>
+        <td>
+            {% for cat in job.categories %}
+                {{ cat.name }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+        {% if job.is_finished %}
+        <td class="table-success text-success">Finished</td>
+        {% else %}
+        <td class="table-danger text-danger">Is not finished</td>
+        {% endif %}
+    </tr>
+    </tbody>
+</table>
+
+{% if current_user.is_authenticated and (current_user.id == 1 or current_user.id == job.team_leader) %}
+<div class="mb-4">
+    <a href="/jobs/{{ job.id }}" class="btn btn-warning">Edit Job</a>
+    <a href="/job_delete/{{ job.id }}" class="btn btn-danger">Delete job</a>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}
