@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-secondary mt-3" style="font-style: italic; color: #ccc !important;">And apple trees will bloom on Mars!</h2>
+<div class="text-center mt-4">
+    <h1>Nostalgy</h1>
+    <h2>{{ user.name }} {{ user.surname }}</h2>
+    <h3>Hometown {{ user.city_from }}</h3>
+    <div class="mt-3">
+        <img src="{{ map_url }}" alt="Hometown map" class="img-fluid border shadow">
+    </div>
+</div>
+{% endblock %}
